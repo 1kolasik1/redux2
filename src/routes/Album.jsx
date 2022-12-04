@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import "./Album.css";
 import Images from "./Images";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {
   selectAlbumID,
   selectAlbumLoad,
@@ -15,7 +13,6 @@ import {
   selectUserByID,
   selectUsersLoad,
 } from "../components/redux/userFetch/selectors";
-import { useCallback } from "react";
 export default function Album() {
   const albumLoading = useSelector(selectAlbumLoad);
   const userLoading = useSelector(selectUsersLoad);
@@ -26,20 +23,23 @@ export default function Album() {
     if (albumLoading || !album) return <div>Loading...</div>;
     if (userLoading || !user) return <div>Loading...</div>;
   };
-  const { id, userId } = useParams();
+  const { id } = useParams();
   useFetch(fetchAlbums());
   useFetch(fetchUsers());
   const album = useSelector((store) => selectAlbumID(store, +id));
   const user = useSelector((store) => selectUserByID(store, album?.userId));
   validation();
   return (
-    <div className="albumInfo">
-      {album && <div className="titleOfAlbum">{album.title}</div>}
-      <div className="creator">
+    <div className="mx-[20px] my-[10px]">
+      {album && <div className="text-3xl font-bold">{album.title}</div>}
+      <div className="text-3xl">
         {user && (
           <Link to={`/users/${user.id}`}>
-            <div className="creatorOfAlbum">
-              Creator <span className="ourSpan">{user.name}</span>
+            <div className="text-3xl">
+              Creator{" "}
+              <span className="underline decoration-green-400 ml-[10px] text-3xl">
+                {user.name}
+              </span>
             </div>
           </Link>
         )}

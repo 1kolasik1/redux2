@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./App.css";
 import Albums from "./routes/Albums";
 import Users from "./routes/Users";
 import User from "./routes/User";
@@ -29,7 +28,7 @@ const router = createBrowserRouter([
         element: <User />,
       },
       {
-        path: "/albums/:id/:userId",
+        path: "/albums/:id",
         element: <Album />,
       },
       {

@@ -1,12 +1,13 @@
 import { NavLink, Outlet } from "react-router-dom";
-import "./Layout.css";
 
 export default function Layout() {
   const setActive = ({ isActive }) =>
-    isActive ? "link-active" : "link-notactive";
+    isActive
+      ? "font-bold ml-[20px] text-white ease-out underline"
+      : "ease-out ml-[20px] font-regular text-gray-700 underline decoration-grey-400";
   return (
-    <div className="all">
-      <header>
+    <div className="min-h-screen">
+      <header className="bg-gray-900 pl-[20px] pr-[20px] pt-[30px] pb-[20px] h-[10vh] text-3xl">
         <NavLink to="/albums" end={true} className={setActive}>
           Albums
         </NavLink>
@@ -17,11 +18,11 @@ export default function Layout() {
       <main>
         <Outlet />
       </main>
-      <footer className="ourFooter">
-        <div className="shellFooter">
-          <div className="creatorOfSite">
+      <footer className="sticky top-full h-[10vh] mx-[100px] my-[20px]">
+        <div className="flex justify-between border-solid border-t-4 border-t-black font-bold text-2xl">
+          <div className="flex">
             <div>Created By:</div>
-            <a className="linkToCreator" href="https://vk.com/kolasikpivasik">
+            <a className="ml-5" href="https://vk.com/kolasikpivasik">
               nikgor
             </a>
           </div>
