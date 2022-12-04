@@ -1,0 +1,14 @@
+.page404 {
+  font-size: 5vh;
+}
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pageNotFound {
+  font-size: 10vh;
+}
+.goToAlbums {
+  font-size: 3vh;
+}
